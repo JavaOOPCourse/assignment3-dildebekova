@@ -1,56 +1,68 @@
+// Main.java
 public class Main {
-
     public static void main(String[] args) {
 
-        User admin = new Admin("Alice", 1);
-        User customer = new Customer("Bob", 2);
+        // Create Users  
+        User admin = new Admin("Alice", 1);  
+        User customer = new Customer("Bob", 2);  
 
-        Service streaming = new StreamingService("StreamPlus", 101);
-        Service cloud = new CloudStorageService("CloudBox", 102);
-        Service consultation = new ConsultationService("MediTalk", 103);
+        // Create Services  
+        Service streaming = new StreamingService("StreamPlus", 101);  
+        Service cloud = new CloudStorageService("CloudBox", 102);  
+        Service consultation = new ConsultationService("MediTalk", 103);  
 
-        Service[] services = {streaming, cloud, consultation};
+        // Store services  
+        Service[] services = {streaming, cloud, consultation};  
 
-        for (Service s : services)
-            s.activateService();
+        // Activate services  
+        for (Service s : services) {  
+            s.activateService();  
+        } 
 
-        System.out.println("------ Performing Core Operations ------");
+        System.out.println("\n------ Performing Core Operations ------"); 
 
-        for (Service s : services)
-            s.performService();
+        for (Service s : services) {  
+            s.performService();  
+        } 
 
-        System.out.println("------ Premium Features ------");
+        System.out.println("\n------ Premium Features ------"); 
 
-        if (streaming instanceof PremiumFeature)
-            ((PremiumFeature) streaming).upgradeToPremium();
+        if (streaming instanceof PremiumFeature) {  
+            ((PremiumFeature) streaming).upgradeToPremium();  
+        } 
 
-        if (cloud instanceof PremiumFeature)
-            ((PremiumFeature) cloud).upgradeToPremium();
+        if (cloud instanceof PremiumFeature) {  
+            ((PremiumFeature) cloud).upgradeToPremium();  
+        } 
 
-        System.out.println("------ Billing Behavior ------");
+        System.out.println("\n------ Billing Behavior ------"); 
 
-        if (cloud instanceof Billable)
-            ((Billable) cloud).generateBill();
+        if (cloud instanceof Billable) {  
+            ((Billable) cloud).generateBill();  
+        } 
 
-        if (consultation instanceof Billable)
-            ((Billable) consultation).generateBill();
+        if (consultation instanceof Billable) {  
+            ((Billable) consultation).generateBill();  
+        } 
 
-        System.out.println("------ User Interactions ------");
+        System.out.println("\n------ User Interactions ------"); 
 
-        admin.manageService(streaming);
-        customer.useService(streaming);
+        admin.manageService(streaming);  
+        customer.useService(streaming);  
 
-        admin.manageService(cloud);
-        customer.useService(cloud);
+        admin.manageService(cloud);  
+        customer.useService(cloud);  
 
-        System.out.println("------ Service Summary ------");
+        System.out.println("\n------ Service Summary ------"); 
 
-        for (Service s : services)
-            System.out.println(s.getServiceName());
+        for (Service s : services) {  
+            System.out.println("📦 " + s.getServiceName());  
+        } 
 
-        System.out.println("------ Deactivating Services ------");
+        System.out.println("\n------ Deactivating Services ------"); 
 
-        for (Service s : services)
-            s.deactivateService();
+        for (Service s : services) {  
+            s.deactivateService();  
+        } 
     }
 }
