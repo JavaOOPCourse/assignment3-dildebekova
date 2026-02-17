@@ -1,5 +1,9 @@
+// PremiumFeature.java
 public interface PremiumFeature {
+    void upgradeToPremium();
+}
 
-    // TODO: declare method upgradeToPremium()
-
+// Billable.java
+public interface Billable {
+    void generateBill();
 }
