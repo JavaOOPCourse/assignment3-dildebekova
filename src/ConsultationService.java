@@ -1,23 +1,24 @@
-public class ConsultationService extends Service
-        implements Billable {
+// ConsultationService.java
+public class ConsultationService extends Service implements Billable {
+    private int sessionDurationMin = 30;
 
-    // TODO: constructor
-
+    public ConsultationService(String serviceName, int serviceId) {
+        super(serviceName, serviceId);
+    }
 
     @Override
     public void performService() {
-
-        // TODO:
-        // check active
-        // print consultation message
-
+        if (!isActive) {
+            System.out.println("⚠️ Cannot start consultation: '" + serviceName + "' is inactive.");
+            return;
+        }
+        System.out.println("💬 Starting " + sessionDurationMin + "-min consultation via '" + serviceName + "'");
     }
 
     @Override
     public void generateBill() {
-
-        // TODO:
-        // print billing message
-
+        double price = sessionDurationMin * 2.5;
+        System.out.println("🧾 Bill for '" + serviceName + "': $" + 
+                          String.format("%.2f", price) + " (" + sessionDurationMin + " min × $2.50)");
     }
 }
