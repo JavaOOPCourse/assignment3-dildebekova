@@ -1,22 +1,21 @@
+// Customer.java
 public class Customer extends User {
-
-    // TODO: constructor
-
+    public Customer(String name, int userId) {
+        super(name, userId);
+    }
 
     @Override
     public void manageService(Service s) {
-
-        // TODO:
-        // print that customer cannot manage services
-
+        System.out.println("⚠️ Customer '" + name + "' cannot manage '" + s.getServiceName() + "': insufficient permissions.");
     }
 
     @Override
     public void useService(Service s) {
-
-        // TODO:
-        // print customer using message
-        // call performService()
-
+        System.out.println("👤 Customer '" + name + "' using service: '" + s.getServiceName() + "'");
+        if (s.isActive()) {
+            s.performService();
+        } else {
+            System.out.println("   → Cannot use inactive service.");
+        }
     }
 }
